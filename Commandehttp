@@ -1,0 +1,44 @@
+save_donnes.php?id_station=1&vitesse=45.0&temperature=15.0&profondeur=20.0
+save_station.php?nom_station=nom_station_nom&address=300 AVENUE ARISTOTE BRIAND&lat=48.1548&lng=8.2365&type=P66
+
+
+Pont de plougastel 48.373650, -4.417905
+
+
+
+
+
+
+
+
+
+
+
+<?php
+	$host="127.0.0.1";
+	$username="Projet";
+	$password="password";
+	$db_name="Projet";
+
+	try
+	{
+	$conn= new PDO("mysql:dbhost={$host};dbname={$db_name}",$username,$password);
+	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	}
+	catch(PDOException $ex)
+	{
+	die($ex->getMessage());
+	}
+	$stat=$conn->prepare("SELECT *from Mesures");
+	$stat->execute();
+	$json=[];
+	$json2=[];
+	while ($row=$stat->fetch(PDO::FETCH_ASSOC)) {
+		extract($row);
+		$json[]=$date;
+		$json2[]=(int)$vitesse;
+	}
+	echo json_encode($json);
+	echo json_encode($json2);
+
+?>

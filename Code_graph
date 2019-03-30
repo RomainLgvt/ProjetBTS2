@@ -1,0 +1,69 @@
+
+<canvas id="myChart" style="height:50px; width:50px;"></canvas>
+
+<div class="container">
+<table width=1000px >
+<tr>
+<td>
+<h3>Température :</h3>
+<td>
+<td>
+<h3>Courant :</h3>
+<td>
+<tr>
+</table>
+
+<hr>
+  <div class="row">
+    <div class="col">
+      <canvas id="temp"></canvas>
+    </div>
+    <div class="col">
+      <canvas id="debit"></canvas>
+    </div>
+  </div>
+</div>
+
+
+<script src="path/to/chartjs/dist/Chart.js"></script>
+<script>
+var ctx = document.getElementById('temp').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: ["2019-01-31\n11:48:24", "2019-01-31 11:48:24", "2019-01-31 11:48:24", "2019-01-31 11:48:24", "2019-01-31 11:48:24", "2019-01-31 11:48:24", "2019-01-31 11:48:24"],
+        datasets: [{
+            label: "Température en °C",
+            borderColor: 'rgb(100,92,92)',
+            data: [0, 19, 20, 25, 26, 24, 23,21,20,24,23],
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});
+</script>
+
+<script>
+var ctx = document.getElementById('debit').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: ["2019-01-31\n11:48:24", "2019-01-31 11:48:24", "2019-01-31 11:48:24", "2019-01-31 11:48:24", "2019-01-31 11:48:24", "2019-01-31 11:48:24", "2019-01-31 11:48:24"],
+        datasets: [{
+            label: "Débit",
+            borderColor: 'rgb(100,92,92)',
+            data: [0, 10, 5, 2, 20, 30, 45],
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});
+</script>
